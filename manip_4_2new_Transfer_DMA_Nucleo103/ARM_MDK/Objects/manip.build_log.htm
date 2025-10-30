@@ -1,0 +1,83 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ÂµVision V5.33.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: EMIR DAMERGI, INSAT, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.33.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.33.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.5.0
+Dialog DLL:      TCM.DLL V1.48.0.0
+ 
+<h2>Project:</h2>
+C:\Users\EMIR\Desktop\New folder\manip_4_2new_Transfer_DMA_Nucleo103\ARM_MDK\manip.uvprojx
+Project File Date:  11/20/2024
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+compiling core_cm3.c...
+assembling startup_stm32f10x_md.s...
+compiling stm32f10x_it.c...
+..\stm32f10x_it.c(26): error:  #40: expected an identifier
+  void .................._IRQHandler(void)
+..\stm32f10x_it.c(29): error:  #29: expected an expression
+    if(................(..............))
+..\stm32f10x_it.c(40): error:  #29: expected an expression
+      .......................(..............);
+..\stm32f10x_it.c: 0 warnings, 3 errors
+compiling main.c...
+..\main.c(51): error:  #29: expected an expression
+    DMA_InitStructure.DMA_DIR = ...............;
+..\main.c(52): error:  #29: expected an expression
+    DMA_InitStructure.DMA_BufferSize = ..............;
+..\main.c(53): error:  #29: expected an expression
+    DMA_InitStructure.DMA_PeripheralInc = ...............;
+..\main.c(54): error:  #29: expected an expression
+    DMA_InitStructure.DMA_MemoryInc = ................;
+..\main.c(55): error:  #29: expected an expression
+    DMA_InitStructure.DMA_PeripheralDataSize = ................;
+..\main.c(56): error:  #29: expected an expression
+    DMA_InitStructure.DMA_MemoryDataSize = ......................;
+..\main.c(57): error:  #29: expected an expression
+    DMA_InitStructure.DMA_Mode = ................;
+..\main.c(59): error:  #29: expected an expression
+    DMA_InitStructure.DMA_M2M = ..............;
+..\main.c(63): error:  #29: expected an expression
+    DMA_ITConfig(DMA1_Channel6, ............., ENABLE);
+..\main.c(99): error:  #29: expected an expression
+    NVIC_InitStructure.NVIC_IRQChannel = ....................;
+..\main.c: 0 warnings, 10 errors
+compiling system_stm32f10x.c...
+compiling misc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+".\Objects\manip.axf" - 13 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.0.pack
+                Keil.STM32F1xx_DFP.2.4.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\EMIR\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
