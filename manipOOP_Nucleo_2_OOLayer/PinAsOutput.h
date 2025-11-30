@@ -81,19 +81,19 @@ public:
 		
 /**** A shorthand for write(): overload (= operator) for object = value
 */
-    /* void operator= (//complete code )
-			{
-        //complete code
-    }*/
+void operator= (int value )
+{
+	write(value);
+}
 
 				
 				
 /***** A shorthand for write(): overload (= operator) for object = object
 */		
 				
-    /*void operator= (//complete code) {
-        //complete code);
-    }*/
+    void operator= (PinAsOutput PAO) {
+        write(PAO.read());
+    }
 
 
 

@@ -135,7 +135,10 @@ void gpio_init_out_ex (PinName pin, PinOutMode mode, PinSpeed speed)
 /*--------------------------------------------*/
 	int gpio_read_out(PinName pin)
 {
-//Code to complete
+	int pinID = (pin & 0x0F);
+	int pinValue =  (get_gpioport(pin)->ODR) & (1<<pinID);
+	return (pinValue) ;
+	
 }
 
 
@@ -144,7 +147,13 @@ void gpio_init_out_ex (PinName pin, PinOutMode mode, PinSpeed speed)
 /*--------------------------------------------*/
 	void gpio_write(PinName pin, int value)
 {
-//Code to complete
+	int pinID = (pin & 0x0F);
+	if(value==1){
+		GPIO_SetBits(get_gpioport(pin),(1<<pinID));}
+	else{
+		GPIO_ResetBits(get_gpioport(pin),(1<<pinID));
+	}
+
 }
 
 
@@ -152,14 +161,25 @@ void gpio_init_out_ex (PinName pin, PinOutMode mode, PinSpeed speed)
 /*-------------------------------------------------------------*/
 static int get_gpio_out_mode (PinOutMode mode)
 {	
-//Code to complete
+	switch (mode){
+		case 0: return GPIO_Mode_Out_PP;
+		case 1: return GPIO_Mode_Out_OD;
+		case 2: return GPIO_Mode_AF_PP;
+		case 3: return GPIO_Mode_AF_OD;
+		default: return GPIO_Mode_Out_PP; 
+		}
 }
 
 /*==== Function To get the ST FW Library speed from OO mode  === */
 /*-------------------------------------------------------------*/
 static int get_gpio_out_speed (PinSpeed speed)
 {	
-//Code to complete
+	switch (speed){
+			case 0: return GPIO_Speed_2MHz;
+			case 1: return GPIO_Speed_10MHz;
+			case 2: return GPIO_Speed_50MHz;
+			default: return GPIO_Speed_2MHz; 
+			}
 }
 
 
@@ -170,7 +190,24 @@ static int get_gpio_out_speed (PinSpeed speed)
 /*================================================================*/
 static void _gpio_init_out(PinName pin, PinOutMode mode, PinSpeed speed)
 {
+	
+	int gpioID = (pin & 0xF0) >> 4; 
+	
+	RCC_APB2PeriphClockCmd( 1<<(gpioID+2) , ENABLE);	
+	
+	  //convert gpioID to GPIOx
+	GPIO_TypeDef* GPIOx = get_gpioport(pin);
 
-// Code to complete 
 
+		//Fills GPIO Structure and Calls GPIO_Init (ST FW Lib)
+	GPIO_InitTypeDef GPIO_InitStruct; 
+
+	GPIO_InitStruct.GPIO_Pin = 1<<(pin & 0x0F);
+	
+	GPIO_InitStruct.GPIO_Mode = (GPIOMode_TypeDef)get_gpio_out_mode(mode);
+	
+	GPIO_InitStruct.GPIO_Speed = get_gpio_out_speed(speed);
+
+	GPIO_Init( GPIOx,  &GPIO_InitStruct);	
+	
 }
